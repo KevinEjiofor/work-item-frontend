@@ -149,14 +149,14 @@ export default function WorkItemsListComponent() {
                             </div>
 
                             <Select
-                                value={filters.status}
-                                onValueChange={(value) => setFilters({ ...filters, status: value })}
+                                value={filters.status || 'all-statuses'}
+                                onValueChange={(value) => setFilters({ ...filters, status: value === 'all-statuses' ? '' : value })}
                             >
                                 <SelectTrigger>
                                     <SelectValue placeholder="All Statuses" />
                                 </SelectTrigger>
                                 <SelectContent>
-                                    <SelectItem value="">All Statuses</SelectItem>
+                                    <SelectItem value="all-statuses">All Statuses</SelectItem>
                                     <SelectItem value="pending">Pending</SelectItem>
                                     <SelectItem value="in_progress">In Progress</SelectItem>
                                     <SelectItem value="completed">Completed</SelectItem>
@@ -165,14 +165,14 @@ export default function WorkItemsListComponent() {
                             </Select>
 
                             <Select
-                                value={filters.priority}
-                                onValueChange={(value) => setFilters({ ...filters, priority: value })}
+                                value={filters.priority || 'all-priorities'}
+                                onValueChange={(value) => setFilters({ ...filters, priority: value === 'all-priorities' ? '' : value })}
                             >
                                 <SelectTrigger>
                                     <SelectValue placeholder="All Priorities" />
                                 </SelectTrigger>
                                 <SelectContent>
-                                    <SelectItem value="">All Priorities</SelectItem>
+                                    <SelectItem value="all-priorities">All Priorities</SelectItem>
                                     <SelectItem value="low">Low</SelectItem>
                                     <SelectItem value="medium">Medium</SelectItem>
                                     <SelectItem value="high">High</SelectItem>
